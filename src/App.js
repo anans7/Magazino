@@ -18,7 +18,7 @@ import NewMagazine from './components/NewMagazine';
 const ERC20_DECIMALS = 18;
 
 
-const contractAddress = "0x1AEfc0fAb8Bf843A4858Ae7544F6B36A68923FB8";
+const contractAddress = "0x3E9E94aB53f989173e212E64275D80e5e4bB75a0";
 const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1";
 
 
@@ -83,7 +83,7 @@ function App() {
  
    
    const getMagazine =  async () => {
-     const magazinesLength = await contract.methods.getmagazinesLength().call();
+     const magazinesLength = await contract.methods.getmagazineslength().call();
      console.log(magazinesLength);
      const _magazinn = []
      for (let index = 0; index < magazinesLength; index++) {
@@ -173,6 +173,7 @@ const addMagazine = async (
       <Magazines magazines ={magazines}
       buyMagazine = {buyMagazine}
       unpublishMagazine = {unpublishMagazine}
+      Owner={address}
        
        
       

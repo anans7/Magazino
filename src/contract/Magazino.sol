@@ -30,11 +30,17 @@ interface IERC20Token {
 
 contract Magazino {
      uint internal magazinesLength = 0;
-      address internal cUsdTokenAddress =    0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
+      address internal cUsdTokenAddress =  0x686c626E48bfC5DC98a30a9992897766fed4Abd3;
        uint256 internal magazinesId = 0;
 
 
         event unpublishMagazineEvent(uint256 magazineId);
+        event createMagazineEvent(
+        string image,
+        string name,
+        string edition,
+        uint price
+    );
 
 
 
@@ -47,6 +53,7 @@ contract Magazino {
             string edition;
             uint price;
             uint256 magazineId;
+             uint createdAt;
        }
 
         mapping (uint =>  Magazine) internal magazines;
@@ -57,7 +64,8 @@ contract Magazino {
         string memory,
         string memory,
         uint,
-        uint256
+        uint256,
+         uint256
 
 
          ) {
@@ -67,7 +75,8 @@ contract Magazino {
               magazines[_index].name,
                magazines[_index].edition,
                 magazines[_index].price,
-                 magazines[_index].magazineId
+                 magazines[_index].magazineId,
+                  magazines[_index].createdAt
 
                  
         );
@@ -88,9 +97,11 @@ contract Magazino {
              _name,
              _edition,
              _price,
-             magazinesId
+             magazinesId,
+             block.timestamp
 
               );
+                emit createMagazineEvent(_image, _name, _edition, _price);
 
                 magazinesLength++;
           magazinesId++;
@@ -123,7 +134,7 @@ contract Magazino {
                    
 }
 
-  function getmagazinesLength() public view returns (uint) {
+  function getmagazineslength() public view returns (uint) {
         return (magazinesLength);
   }
 

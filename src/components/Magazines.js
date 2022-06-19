@@ -24,10 +24,12 @@ const Magazines = (props) => {
 </div>
 
 <div> 
-       <button type="button" class="btn btn-outline-dark" onClick={() => props.buyMagazine(mag.index)}>Buy Now</button>
-       
+{props.Owner !== mag.owner && (
+       <button type="button" class="btn btn-outline-dark" onClick={() => props.buyMagazine(mag.index)}>Buy Now</button>  )}
+
+       {props.Owner === mag.owner && (
        <button type='button' class="btn btn-outline-dark" onClick={ ()=> props.unpublishMagazine(mag.index)}>unpublish Magazine</button>
-                
+       )}
                 </div>
                 </div>
 
